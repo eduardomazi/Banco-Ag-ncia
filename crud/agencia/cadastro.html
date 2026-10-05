@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Viagem</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background: #f5f5f5; }
+
+        /* Barra de abas no topo da pagina. */
+        .abas { display: flex; gap: 4px; margin-bottom: -1px; }
+        .abas a { padding: 10px 22px; text-decoration: none; color: #444; background: #e0e0e0; border-radius: 8px 8px 0 0; font-size: 15px; }
+        .abas a:hover { background: #d0d0d0; }
+        .abas a.ativa { background: #fff; color: #000; font-weight: bold; }
+
+        .container { background: #fff; padding: 25px; border-radius: 0 8px 8px 8px; max-width: 900px; }
+        h1 { margin-top: 0; }
+        fieldset { margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; }
+        legend { font-weight: bold; padding: 0 8px; }
+        .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        label { display: flex; flex-direction: column; font-size: 14px; gap: 4px; }
+        input, select { padding: 6px; font-size: 15px; }
+        .linha-passageiro { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 10px; align-items: end; }
+        button { padding: 8px 16px; font-size: 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <!-- Abas de navegacao entre as telas. -->
+     <nav class="abas">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Viagens</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="relatorios.html" class="ativa">Relatórios</a>
+    </nav>
+
+    <div class="container">
+        <h1>Cadastrar Viagem</h1>
+
+        <form id="form-viagem">
+            <!-- Dados de quem reserva e paga. Ele entra em passageiros automaticamente. -->
+            <fieldset>
+                <legend>Pagante (quem reserva e paga)</legend>
+                <div class="grade">
+                    <label>Nome * <input type="text" id="pg-nome" required></label>
+                    <label>CPF * <input type="text" id="pg-cpf" required></label>
+                    <label>Data de nascimento <input type="date" id="pg-nascimento"></label>
+                    <label>Telefone <input type="text" id="pg-telefone"></label>
+                    <label>E-mail <input type="email" id="pg-email"></label>
+                    <label>Endereço <input type="text" id="pg-endereco"></label>
+                    <label>CEP <input type="text" id="pg-cep"></label>
+                </div>
+            </fieldset>
+
+            <!-- Dados da viagem. -->
+            <fieldset>
+                <legend>Viagem</legend>
+                <div class="grade">
+                    <label>Localizador * <input type="text" id="v-localizador" required></label>
+                    <label>Destino * <input type="text" id="v-destino" required></label>
+                    <label>Data da venda * <input type="date" id="v-venda" required></label>
+                    <label>Data de saída * <input type="date" id="v-saida" required></label>
+                    <label>Data de retorno <input type="date" id="v-retorno"></label>
+                    <label>Valor total (R$) * <input type="number" id="v-valor" step="0.01" min="0" required></label>
+                    <label>Status
+                        <select id="v-status">
+                            <option value="confirmada">Confirmada</option>
+                            <option value="cancelada">Cancelada</option>
+                            <option value="concluida">Concluída</option>
+                        </select>
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Acompanhantes. As linhas sao criadas pelo botao abaixo. -->
+            <fieldset>
+                <legend>Passageiros acompanhantes (o pagante já entra sozinho)</legend>
+                <div id="lista-passageiros"></div>
+                <button type="button" id="add-passageiro">+ Adicionar passageiro</button>
+            </fieldset>
+
+            <button type="submit">Salvar viagem</button>
+        </form>
+    </div>
+
+    <!-- jQuery e o codigo da tela, nessa ordem. -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/cadastro.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viagens do Mês</title>
+
+    <!-- Estilo do DataTables. -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: #f5f5f5;
+        }
+
+        /* Barra de abas no topo da pagina. */
+        .abas {
+            display: flex;
+            gap: 4px;
+            margin-bottom: -1px;
+        }
+
+        .abas a {
+            padding: 10px 22px;
+            text-decoration: none;
+            color: #444;
+            background: #e0e0e0;
+            border-radius: 8px 8px 0 0;
+            font-size: 15px;
+        }
+
+        .abas a:hover {
+            background: #d0d0d0;
+        }
+
+        /* Aba da pagina atual. */
+        .abas a.ativa {
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 0 8px 8px 8px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .filtro {
+            margin-bottom: 20px;
+        }
+
+        .filtro input {
+            padding: 6px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Abas de navegacao entre as telas. -->
+   <nav class="abas">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html" class="ativa">Viagens</a>
+    <a href="cadastro.html">Cadastro</a>
+    <a href="relatorios.html">Relatórios</a>
+</nav>
+
+    <div class="container">
+        <h1>Viagens do Mês</h1>
+
+        <!-- Campo para escolher o mês. A tabela recarrega ao trocar. -->
+        <div class="filtro">
+            <label for="mes">Mês:</label>
+            <input type="month" id="mes">
+        </div>
+
+        <!-- Tabela preenchida pelo DataTables. Sao 10 colunas, na mesma ordem do JavaScript. -->
+        <table id="tabela-viagens" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Localizador</th>
+                    <th>Destino</th>
+                    <th>Saída</th>
+                    <th>Retorno</th>
+                    <th>Pagante</th>
+                    <th>Telefone</th>
+                    <th>Qtd.</th>
+                    <th>Passageiros</th>
+                    <th>Valor</th>
+        <th>Status</th>
+    </div>
+
+    <!-- jQuery e DataTables (nessa ordem). -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <!-- Seu codigo, sempre por ultimo. -->
+    <script src="../js/viagem.js"></script>
+</body>
+</html>

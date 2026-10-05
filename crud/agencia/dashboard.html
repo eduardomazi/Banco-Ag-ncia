@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background: #f5f5f5; }
+
+        .abas { display: flex; gap: 4px; margin-bottom: -1px; }
+        .abas a { padding: 10px 22px; text-decoration: none; color: #444; background: #e0e0e0; border-radius: 8px 8px 0 0; font-size: 15px; }
+        .abas a:hover { background: #d0d0d0; }
+        .abas a.ativa { background: #fff; color: #000; font-weight: bold; }
+
+        .container { background: #fff; padding: 25px; border-radius: 0 8px 8px 8px; }
+        h1, h2 { margin-top: 0; }
+        .filtro { margin-bottom: 20px; }
+        .filtro input { padding: 6px; font-size: 15px; }
+
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .card { background: #f2f6fb; border-radius: 8px; padding: 18px; }
+        .card .titulo { font-size: 14px; color: #555; }
+        .card .valor { font-size: 28px; font-weight: bold; margin-top: 6px; }
+        .card.alerta .valor { color: #c0392b; }
+    </style>
+</head>
+<body>
+    <nav class="abas">
+        <a href="dashboard.html" class="ativa">Dashboard</a>
+        <a href="index.html">Viagens</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="relatorios.html">Relatórios</a>
+    </nav>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+
+        <div class="filtro">
+            <label for="mes">Mês dos totais:</label>
+            <input type="month" id="mes">
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="titulo">Vendas no mês (data da venda)</div>
+                <div class="valor" id="card-viagens">-</div>
+            </div>
+            <div class="card">
+                <div class="titulo">Faturamento das vendas do mês</div>
+                <div class="valor" id="card-faturamento">-</div>
+            </div>
+            <div class="card">
+                <div class="titulo">Viagens com saída no mês</div>
+                <div class="valor" id="card-saidas-mes">-</div>
+            </div>
+            <div class="card">
+                <div class="titulo">Saídas nos próximos 15 dias</div>
+                <div class="valor" id="card-proximas">-</div>
+            </div>
+            <div class="card alerta">
+                <div class="titulo">Vendas canceladas no mês</div>
+                <div class="valor" id="card-canceladas">-</div>
+            </div>
+        </div>
+
+        <h2>Próximas saídas (15 dias)</h2>
+        <table id="tabela-proximas" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Localizador</th>
+                    <th>Destino</th>
+                    <th>Saída</th>
+                    <th>Pagante</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+    <script src="../js/comum.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
